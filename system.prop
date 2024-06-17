@@ -9,3 +9,5 @@ ro.crypto.allow_encrypt_override=true
 vendor.gatekeeper.disable_spu=true
 ro.board.platform=msmnile
 ro.product.board=msmnile
+ro.product.name=x3
+ro.product.product.device=x3
