@@ -1,34 +1,73 @@
 #!/system/bin/sh
-
-load_RMX1931L1()
+# This script is needed to automatically set device props.
+load_X3()
 {
-    resetprop "ro.product.device" "RMX1931L1"
-    resetprop "ro.commonsoft.ota" "RMX1931L1"
-    resetprop "ro.separate.soft" "19688"
-    echo "Global variant detected"
+	echo "Setting up props for Realme X3"
+    resetprop "ro.product.model" "Realme X3"
+    resetprop "ro.product.device" "RMX2081L1"
+	resetprop "ro.commonsoft.ota" "RMX2081L1"
+	resetprop "ro.product.product.device" "RMX2081L1"
 }
 
-load_RMX1931CN()
+load_X3SZ()
 {
-    resetprop "ro.product.device" "RMX1931CN"
-    resetprop "ro.commonsoft.ota" "RMX1931"
-    resetprop "ro.separate.soft" "19781"
-    echo "Chinese variant detected"
+	echo "Setting up props for Realme X3 SuperZoom"
+    resetprop "ro.product.model" "Realme X3 SuperZoom"
+    resetprop "ro.product.device" "RMX2085L1"
+	resetprop "ro.commonsoft.ota" "RMX2085L1"
+	resetprop "ro.product.product.device" "RMX2085L1"
 }
 
-project=$(cat /proc/oplusVersion/operatorName)
+load_X3SZ1()
+{
+	echo "Setting up props for Realme X3"
+    resetprop "ro.product.model" "Realme X3"
+    resetprop "ro.product.device" "RMX2082L1"
+	resetprop "ro.commonsoft.ota" "RMX2082L1"
+	resetprop "ro.product.product.device" "RMX2082L1"
+}
+
+load_X3SZ2()
+{
+	echo "Setting up props for Realme X3 SuperZoom"
+    resetprop "ro.product.model" "Realme X3 SuperZoom"
+    resetprop "ro.product.device" "RMX2086L1"
+	resetprop "ro.commonsoft.ota" "RMX2086L1"
+	resetprop "ro.product.product.device" "RMX2086L1"
+}
+
+load_X3SZ3()
+{
+	echo "Setting up props for Realme X3"
+    resetprop "ro.product.model" "Realme X3"
+    resetprop "ro.product.device" "RMX2083L1"
+	resetprop "ro.commonsoft.ota" "RMX2083L1"
+	resetprop "ro.product.product.device" "RMX2083L1"
+}
+
+project=$(cat /proc/oppoVersion/prjName)
 echo $project
 
 case $project in
-    "5") load_RMX1931L1 ;;
-    "8") load_RMX1931CN ;;
+     "19696")
+         load_X3
+         ;;
+     "19710")
+         load_X3SZ
+		 ;;
+	"19697")
+         load_X3SZ1
+		 ;;
+	"19711")
+         load_X3SZ2
+		 ;;
+	"19698")
+         load_X3SZ3
+		 ;;
+     *)
+ 	load_X3
+ 	;;
 esac
 
-resetprop "ro.build.date.utc" "1000000000"
-resetprop "ro.system.build.date.utc" "0000000000"
-resetprop "ro.system_ext.build.date.utc" "0000000000"
-resetprop "ro.vendor.build.date.utc" "0000000000"
-resetprop "ro.odm.build.date.utc" "0000000000"
-resetprop "ro.product.build.date.utc" "0000000000"
-
 exit 0
+#
